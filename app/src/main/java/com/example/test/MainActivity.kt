@@ -38,65 +38,24 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Test()
+            Test(listOf(20f,24f,33f,27f,55f,30f,66f,10f,15f))
 
         }
     }
 }
 
-@Composable
-fun Test() {        val textMeasurer = rememberTextMeasurer()
-    Canvas(
-        modifier = Modifier
-            .padding(horizontal = 10.dp)
-            .fillMaxSize()
-    ) {
 
-        val canvasWidth = 0f
-        val canvasHeight = 1700f
-
-        val width = 200f
-        val height = 500f
-        val numRectangles = 3
-        drawLine(
-            start = Offset(x = canvasWidth, y = 0f),
-            end = Offset(x = 0f, y = canvasHeight),
-         strokeWidth = 3f,
-            color = Color.Black
-
-        )
-
-        repeat(numRectangles) { index ->
-            drawRect(
-                color = Color.Red,
-                size = Size(width, height),
-                topLeft = Offset(80+ index *250f, 700f)/**so it 80+ from the left hand side of the app screen and each rectangle is space 250f*/,
-
-                )
-            drawText(textMeasurer, "Hello")
-
-        }
-    }
-}
-/*
 @Composable
 fun Test(data: List<Float>) {
-    val canvasWidth = 0f
-    val canvasHeight = 1700f
-
     val maxDataValue = data.maxOrNull() ?: 0f // Handle an empty list or list with 0 values
-    val scale = canvasHeight / maxDataValue // Calculate scaling factor
+    val scale = 1700f / maxDataValue // Calculate scaling factor
 
     Canvas(
         modifier = Modifier
             .padding(horizontal = 10.dp)
             .fillMaxSize()
     ) {
-
-        val xAxisOffset = 80f // Adjust for desired x-axis position
         val barWidth = 50f // Adjust for desired bar width
-        val barSpacing = 20f // Adjust for spacing between bars
-
 
         data.forEachIndexed { index, value ->
             val barHeight = value * scale // Calculate bar height based on data and scaling
@@ -104,8 +63,9 @@ fun Test(data: List<Float>) {
             drawRect(
                 color = Color.Red,
                 size = Size(barWidth, barHeight),
-                topLeft = Offset( x = xAxisOffset + index * (barWidth + barSpacing),y = canvasHeight - barHeight // Draw bars from top to bottom)
+                topLeft = Offset( 80+ index *200f,y = 1700f - barHeight // Draw bars from top to bottom)
+            )
             )
         }
     }
-}*/
+}
