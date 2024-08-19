@@ -97,12 +97,6 @@ fun Test(data: List<Float>) {
         val barWidth = 50f // Adjust for desired bar width
         val barSpacing = 20f // Adjust for spacing between bars
 
-        drawLine(
-            start = Offset(x = canvasWidth, y = 0f),
-            end = Offset(x = 0f, y = canvasHeight),
-            strokeWidth = 3f,
-            color = Color.Black
-        )
 
         data.forEachIndexed { index, value ->
             val barHeight = value * scale // Calculate bar height based on data and scaling
@@ -110,10 +104,7 @@ fun Test(data: List<Float>) {
             drawRect(
                 color = Color.Red,
                 size = Size(barWidth, barHeight),
-                topLeft = Offset(
-                    x = xAxisOffset + index * (barWidth + barSpacing),
-                    y = canvasHeight - barHeight // Draw bars from top to bottom
-                )
+                topLeft = Offset( x = xAxisOffset + index * (barWidth + barSpacing),y = canvasHeight - barHeight // Draw bars from top to bottom)
             )
         }
     }
